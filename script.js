@@ -1,133 +1,141 @@
-let start = document.getElementById("start");
+let startButton = document.getElementById("start-btn")
+let nextButton = document.getElementById("next-btn")
+// let restartButton=document.getElementById("restart-btn")
 
-let quiz = document.getElementById("quiz")
+let questionContainerElement = document.getElementById("question-container")
+let questionElement = document.getElementById("question")
+let answerButtonsElement = document.getElementById("answer-buttons")
 
-let question = document.getElementById("question");
+let answerButtons = document.getElementById("answer-buttons")
 
-let timer = document.getElementById("timer")
+startButton.addEventListener("click", startGame)
+// restartButton.addEventListener("click",restartGame)
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
+function startGame() {
+    console.log("started")
+    startButton.classList.add("hide")
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove("hide")
+    setNextQuestion()
+}
 
-let choiceA = document.getElementById("A");
-let choiceB = document.getElementById("B");
-let choiceC = document.getElementById("C");
-let choiceD = document.getElementById("D");
+function setNextQuestion() {
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+}
 
-const shuffledQuestions, currentQuestionIndex
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        let button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add("btn")
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener("click", selectAnswer)
+        answerButtonsElement.appendChild(button)
+    });
+}
 
-var question = [
-    {
-        question: "Smallest country in South America",
-        options: [
-            {
-                option: "Paraguay",
-                correct: false
-            }, {
-                option: "Suriname",
-                correct: true
-            }, {
-                option: "Uruguay",
-                correct: false
-            }, {
-                option: "Ecuador",
-                correct: false
-            }
-
-        ],
-
-        question: " what's the biggest muscle in the arm",
-        options: [
-            {
-                option: "Brachialis",
-                correct: false
-            }, {
-                option: "Triceps",
-                correct: true
-            }, {
-                option: "Biceps",
-                correct: false
-            }, {
-                option: "Coracobrachialis",
-                correct: false
-            }
-
-        ],
-
-        question: " Longest muscle of the back",
-        options: [
-            {
-                option: "Trapezius",
-                correct: false
-            }, {
-                option: "Latissimus Dorsi",
-                correct: false
-            }, {
-                option: "Rhomboids",
-                correct: false
-            }, {
-                option: "Longissmus",
-                correct: true
-            }
-
-        ],
-
-        question: " Second most popular sport in the world",
-        options: [
-            {
-                option: "Baseball",
-                correct: false
-            }, {
-                option: "Basketball",
-                correct: false
-            }, {
-                option: "Cricket",
-                correct: true
-            }, {
-                option: "Volleyball",
-                correct: false
-            }
-
-        ]
+function resetState() {
+    clearStatusClass(document.body)
+    nextButton.classList.add("hide")
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild
+            (answerButtonsElement.firstChild)
     }
-]
-
-let lastQuestionIndex = questions.length- 1;
-let runningQuestion = 0;
-
-//render a question
-
-function renderQuestion(){
-    let q = questions[runningQuestion];
-    question.innerHTML = "<p>"+ q.question +"</p>";
-
 }
 
-start.style.display = "none";
-renderQuestion.Question();
-quiz.style.display = "block";
-// let startButton = document.getElementById("start-btn")
 
-startButton.addEventListener("click", startQuiz)
-
-function startQuiz() {
-
-    // console.log("Started")
-    // hide welcome contaier
-    // show question container
-    // show first question-function
-    showQuestion(0)
-
-
-    //start timer -function
-    startButton.classList.add("hide")``
+function selectAnswer(e) {
+    let selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    restartButton.classList.add("hide")
+    // if (shuffledQuestions.length > currentQuestionIndex +1) {  
+    // nextButton.classList.remove("hide")
+    // } else {
+    //     restartButton.classList.remove("hide")
+    // }
 }
-function showQuestion(questionNumber) {
-    //select question number from question array [0]
-    //display question on screen
-}
+    function setStatusClass(element, correct) {
+        clearStatusClass(element)
+        if (correct) {
+            element.classList.add("correct")
+        } else {
+            element.classList.add("wrong")
+        }
+    }
+    function clearStatusClass(element) {
+        element.classList.remove("correct")
+        element.classList.remove("wrong")
+    }
 
-function selectAnswer() {
+    let questions = [
+        {
+            question: "what is the Smallest country in South America?",
+            answers: [
+                {
+                    text: "Paraguay", correct: false
+                }, {
+                    text: "Suriname", correct: true
+                }, {
+                    text: "Uruguay", correct: false
+                }, {
+                    text: "Ecuador", correct: false
+                }
 
+            ],
 
-}
+            question: " what's the biggest muscle in the arm?",
+            answers: [
+                {
+                    text: "Brachialis", correct: false
+                }, {
+                    text: "Triceps", correct: true
+                }, {
+                    text: "Biceps", correct: false
+                }, {
+                    text: "Coracobrachialis", correct: false
+                }
 
-var time
-var highscore
+            ],
+
+            question: "what is Longest muscle of the back?",
+            answers: [
+                {
+                    text: "Trapezius", correct: false
+                }, {
+                    text: "Latissimus Dorsi", correct: false
+                }, {
+                    text: "Rhomboids", correct: false
+                }, {
+                    text: "Longissmus", correct: true
+                }
+
+            ],
+
+            question: "what is Second most popular sport in the world?",
+            answers: [
+                {
+                    text: "Baseball", correct: false
+                }, {
+                    text: "Basketball", correct: false
+                }, {
+                    text: "Cricket", correct: true
+                }, {
+                    text: "Volleyball", correct: false
+                }
+
+            ]
+        }
+
+    ]
