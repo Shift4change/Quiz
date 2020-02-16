@@ -1,108 +1,71 @@
-*, *::before, *::after{
-
-box-sizing: border-box;
-font-family: Arial, Helvetica, sans-serif;
-justify-content: center;
-align-items: center;
-}
-
 body {
-    background-color: rgb(177, 116, 167);
-    padding: 0;
-    margin: 0;
-    display: flex;
-    width: 100vw;
+   
     height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
+    
 
-body.correct {
-    background-color:rgb(157, 247, 157);
-}
-
-body.wrong{
-    background-color: rgb(243, 71, 157);
-}
-
-.container{
-    width: 360px;
-    height: 200px;
-max-width: 80%;
-background-color: rgb(218, 194, 194);
-border-radius: 5px;
-padding: 10px;
-box-shadow: 0 0 10px 2px;
-}
-
-.btn-grid{
-    float: left;
-    display: grid;
-
-    gap: 10px;
-
-    margin: 20px 0;
     
 }
 
-.btn {
-    border:1px solid 100%, 30%;
-     background-color: rgb(116, 16, 116); 
-border-radius: 5px;
-padding: 2px 5px;
-color: white;
-outline: none;
-width: 228px;
-align-items: center;
-
+.center {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* centering the element */
+    transform: translate(-50%, -50%); 
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(195, 143, 202);
 }
 
-.btn:hover {
-    border-color:black;
+.btn-style {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn-style:hover {
+    background-color: rgb(185, 179, 185);
+    color: rgb(156, 134, 156);
 }
 
-.controls {
-    
-    
-
-    gap: 10px;
-
-    margin: 20px 0;
-    
+.timp {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100px;
+    text-align: right;
+    font-size: 18px;
 }
 
-
-.btn.correct {
-    background-color:rgb(157, 247, 157);
+#contain-quiz {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+ /* center the element */
+    transform: translate(-50%, -50%);
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+.quiz-btn {
+    width: 200px;
 }
 
-.btn.wrong {
-  background-color: rgb(243, 71, 157);
+.bottom-row {
+    margin-top: 20px;
 }
 
-.controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.top-row {
+    margin-top: 20px;
 }
-.start-btn {
-    /* height: 100px;
-    width: 150px; */
-    
-    font-size:1.5rem;
-    font-weight: bold;
-    padding: 23px 20px;
-    align-items: center;
-    width: 35vw;
 
+.btn{
+    background-color: rgb(151, 72, 151);
 }
-.restart-btn{
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 11px 8px;
-    align-items: center;
-    width: 35vw;
-}
-.hide {
-    display: none;
+
+#sfarsit {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
 }
