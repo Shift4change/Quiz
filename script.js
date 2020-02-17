@@ -1,5 +1,5 @@
 
-var startContainer = document.getElementById("bun-venit");
+let startContainer = document.getElementById("bun-venit");
 let quizContainer = document.getElementById("contain-quiz")
 let submitButton = document.getElementById("submit");
 let timpTp = document.getElementById("timp");
@@ -15,7 +15,7 @@ var catTimp = 60;
 //
 // 
 
-var questions = [{
+let questions = [{
     q: "What is the Smallest country in South America?",
     a: "a",
     c1: "Suriname",
@@ -53,7 +53,7 @@ submitButton.addEventListener("click", function incarcaIntr() {
 
 
    
-    var timeInterval = setInterval(function () {
+    let timeInterval = setInterval(function () {
         timpTp.textContent = catTimp + " seconds remaining";
         catTimp--;
 
@@ -73,9 +73,9 @@ submitButton.addEventListener("click", function incarcaIntr() {
 
 
     function puneIntrebari() {
-        var i = 0;
-        var questIntr = questions[i];
-        var raspunsCorrect = questIntr.a;
+        let i = 0;
+        let questIntr = questions[i];
+        let raspunsCorrect = questIntr.a;
         console.log(raspunsCorrect);
         fragen.textContent = questIntr.q;
         aRaspuns.textContent = questIntr.c1;
@@ -92,7 +92,7 @@ submitButton.addEventListener("click", function incarcaIntr() {
 
         });
         cRaspuns.addEventListener('click', function () {
-          
+          console.log(raspunsCorrect);
 
         });
         dRaspuns.addEventListener('click', function () {
@@ -102,7 +102,9 @@ submitButton.addEventListener("click", function incarcaIntr() {
 
 
         if (raspunsCorrect === true) {
+            let raspunsCorrect = a
             console.log(raspunsCorrect);
+            console.log("waht is the value of raspuns Correct"+raspunsCorrect)
         }
     }
 
